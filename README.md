@@ -15,12 +15,17 @@ Modern ve kullanışlı bir not defteri web uygulaması. Next.js, Clerk, Supabas
 
 ## Teknolojiler
 
-- **Frontend**: Next.js 14, TypeScript, Tailwind CSS
+- **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS
 - **Backend**: Next.js API Routes
 - **Veritabanı**: PostgreSQL (Supabase)
 - **ORM**: Prisma
 - **Authentication**: Clerk
-- **UI Components**: Radix UI, Lucide React
+- **UI Components**: shadcn/ui, Radix UI, Lucide React
+- **Styling**: Tailwind CSS, CSS Animations
+- **State Management**: React Hooks
+- **Form Handling**: React Hook Form (implicit)
+- **Icons**: Lucide React
+- **Theme Management**: next-themes
 
 ## Kurulum
 
