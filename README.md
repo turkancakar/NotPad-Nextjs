@@ -1,36 +1,135 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Not Defteri - Modern Not Alma Uygulaması
 
-## Getting Started
+Modern ve kullanışlı bir not defteri web uygulaması. Next.js, Clerk, Supabase ve Prisma kullanılarak geliştirilmiştir.
 
-First, run the development server:
+## Özellikler
 
+- 🔐 **Kullanıcı Yönetimi**: Clerk ile güvenli giriş/çıkış
+- 📝 **Not Alma**: Hızlı ve kolay not alma
+- 📁 **Klasör Organizasyonu**: Notları klasörlere ayırma
+- 🔍 **Arama**: Notlarda hızlı arama
+- 📌 **Sabitleme**: Önemli notları sabitleme
+- 📦 **Arşivleme**: Notları arşivleme
+- 🎨 **Renkli Notlar**: Notlara renk atama
+- 📱 **Responsive Tasarım**: Mobil uyumlu arayüz
+
+## Teknolojiler
+
+- **Frontend**: Next.js 14, TypeScript, Tailwind CSS
+- **Backend**: Next.js API Routes
+- **Veritabanı**: PostgreSQL (Supabase)
+- **ORM**: Prisma
+- **Authentication**: Clerk
+- **UI Components**: Radix UI, Lucide React
+
+## Kurulum
+
+1. **Projeyi klonlayın**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd not-defteri2
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Bağımlılıkları yükleyin**
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Environment değişkenlerini ayarlayın**
+`.env` dosyası oluşturun ve aşağıdaki değişkenleri ekleyin:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+# Database
+DATABASE_URL="postgresql://username:password@localhost:5432/notdefteri"
 
-## Learn More
+# Clerk
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
 
-To learn more about Next.js, take a look at the following resources:
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Veritabanını ayarlayın**
+```bash
+npx prisma generate
+npx prisma db push
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. **Uygulamayı çalıştırın**
+```bash
+npm run dev
+```
 
-## Deploy on Vercel
+## Kullanım
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Kayıt Olun**: Ana sayfada "Kayıt Ol" butonuna tıklayın
+2. **Giriş Yapın**: E-posta ve şifrenizle giriş yapın
+3. **Not Alın**: "Yeni Not" butonuna tıklayarak not oluşturun
+4. **Düzenleyin**: Notları düzenleyin, sabitleyin, arşivleyin
+5. **Organize Edin**: Notları klasörlere ayırın
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## API Endpoints
+
+### Notlar
+- `GET /api/notes` - Tüm notları getir
+- `POST /api/notes` - Yeni not oluştur
+- `GET /api/notes/[id]` - Tekil not getir
+- `PUT /api/notes/[id]` - Not güncelle
+- `DELETE /api/notes/[id]` - Not sil
+
+### Klasörler
+- `GET /api/folders` - Tüm klasörleri getir
+- `POST /api/folders` - Yeni klasör oluştur
+
+### Kullanıcı
+- `GET /api/user` - Kullanıcı bilgilerini getir
+
+## Veritabanı Şeması
+
+### User
+- `id`: Benzersiz kullanıcı ID'si
+- `clerkId`: Clerk kullanıcı ID'si
+- `email`: E-posta adresi
+- `name`: Kullanıcı adı
+- `createdAt`: Oluşturulma tarihi
+- `updatedAt`: Güncellenme tarihi
+
+### Folder
+- `id`: Benzersiz klasör ID'si
+- `name`: Klasör adı
+- `description`: Klasör açıklaması
+- `color`: Klasör rengi
+- `userId`: Kullanıcı ID'si
+- `createdAt`: Oluşturulma tarihi
+- `updatedAt`: Güncellenme tarihi
+
+### Note
+- `id`: Benzersiz not ID'si
+- `title`: Not başlığı
+- `content`: Not içeriği
+- `isPinned`: Sabitlenmiş mi?
+- `isArchived`: Arşivlenmiş mi?
+- `color`: Not rengi
+- `userId`: Kullanıcı ID'si
+- `folderId`: Klasör ID'si (opsiyonel)
+- `createdAt`: Oluşturulma tarihi
+- `updatedAt`: Güncellenme tarihi
+
+## Katkıda Bulunma
+
+1. Fork yapın
+2. Feature branch oluşturun (`git checkout -b feature/amazing-feature`)
+3. Commit yapın (`git commit -m 'Add amazing feature'`)
+4. Push yapın (`git push origin feature/amazing-feature`)
+5. Pull Request oluşturun
+
+## Lisans
+
+Bu proje MIT lisansı altında lisanslanmıştır.
+
+## İletişim
+
+Sorularınız için issue açabilir veya pull request gönderebilirsiniz.
