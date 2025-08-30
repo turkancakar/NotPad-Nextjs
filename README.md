@@ -126,10 +126,6 @@ npm run dev
 4. Push yapın (`git push origin feature/amazing-feature`)
 5. Pull Request oluşturun
 
-## Lisans
-
-Bu proje MIT lisansı altında lisanslanmıştır.
-
 ## İletişim
 
 Sorularınız için issue açabilir veya pull request gönderebilirsiniz.
