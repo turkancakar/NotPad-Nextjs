@@ -26,6 +26,9 @@ Modern ve kullanışlı bir not defteri web uygulaması. Next.js, Clerk, Supabas
 - **Form Handling**: React Hook Form (implicit)
 - **Icons**: Lucide React
 - **Theme Management**: next-themes
+- **Rendering**: Server-Side Rendering (SSR), Client-Side Rendering (CSR)
+- **API**: RESTful API Routes
+- **Middleware**: Clerk Middleware
 
 ## Kurulum
 
